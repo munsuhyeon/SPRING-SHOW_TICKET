@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+body{
+margin:0;
+fotn-family:Dotum,'돋움';
+}
+#wrapper {
+position: relative;
+height: 100%;
+}
+#content {
+position: absolute;
+left: 50%;
+transform: translate(-50%);
+width: 28.75em;
+}

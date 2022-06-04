@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+/* 레이아웃 틀 */
+
+body{
+margin:0;
+fotn-family:Dotum,'돋움';
+}
+#wrapper {
+position: relative;
+height: 100%;
+}
+#header {
+padding-top: 3.875em;
+padding-bottom: 1.25em;
+text-align: center;
+}
+#content {
+position: absolute;
+left: 50%;
+transform: translate(-50%);
+width: 28.75em;
+}
+#btn{
+align:center;
+margin-left:8.5em;
+}
+
+
+
+
+

@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+body{
+margin:0;
+fotn-family:Dotum,'돋움';
+}
+#wrapper {
+position: relative;
+height: 100%;
+}
+#input01{
+border: 1px solid #848484;
+border-radius:0.5em;
+width: 12em;
+height:2.5em;
+padding:1em;
+font-size:1em;
+margin-bottom:0.7em;
+margin-left:2em;
+}
+.td-type01{
+font-size:1em;
+margin-bottom:0.7em;
+}

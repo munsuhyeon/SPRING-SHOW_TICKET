@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+ * {
+    margin:0;
+    padding:0;
+    }
+
+    ul {
+    list-style-type:none;
+    }
+
+    body {
+    font-family:"맑은 고딕","굴림","돋움";
+    }
+
+    .clear {
+    clear:both;
+    }
+    .hide{
+    display: none;
+    }
+    a:link{
+    text-decoration: none;
+    }
+    a:visited { <!-- 하이퍼링크 클릭했던것들 색변경,밑줄삭제 -->
+	text-decoration: none;
+	}
+	a:hover {<!-- 하이퍼링크 마우스 올리면 색 변경, 밑줄넣기 -->
+	text-decoration: underline;
+	}
