@@ -8,15 +8,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="format-datection" content="telephone=no">
 <title>Footer</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css">
 </head>
 <body>
-	<table class="t-type02"  width="100%" border="0" cellspacing="0" cellpadding="0">
-		<tr><td height="20" bgcolor="#ffffff">&nbsp;</td></tr>
-		<tr><td height="20" align="center">티켓월드(주)</td></tr>
-		<tr><td height="20" align="center">서울시 강남구 삼성동 1234 우 :123-1234</td></tr>
-		<tr><td height="20" align="center">TEL : 031-1234-1234 Email : <a href="mailto:shcnu16@gmail.com">shcnu16@gmail.com</a></td></tr>
-		<tr><td height="20" align="center">Copyright ⓒ WorldTicket All rights Reserved</td></tr>
-	</table>
+	<footer class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">Back to top</a>
+    </p>
+    <p class="mb-1">티켓월드(주) &copy; WorldTicket All rights Reserved</p>
+    <p class="mb-0">TEL : 031-1234-1234 Email : <a href="mailto:shcnu16@gmail.com">shcnu16@gmail.com</a></a>.</p>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

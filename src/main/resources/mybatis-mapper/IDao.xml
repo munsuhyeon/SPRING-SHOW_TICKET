@@ -26,10 +26,21 @@
    </update>
    
    <!-- board SQL -->
+   
    	<select id="listDao" resultType="com.suhyeon.profile_web.dto.BoardDto">
-   		select * from cic_board order by bnum desc
-   	</select>
-   	
+   		select /*+ index_desc(cic_board cic_board_pk) */ rownum rn, bnum, btitle, bid, bdate, bhit from cic_board where bnum > 0
+	
+   		<!--select * from cic_board order by bnum desc-->
+   </select> 
+   <!-- <![CDATA[
+   	select * from
+	(
+	select /*+ index_desc(cic_board cic_board_pk) */ rownum rn, bnum, btitle, bid, bdate, bhit
+	from cic_board
+	where bnum > 0 and rownum > 0 and rownum <= (2 * 10)
+	)
+	where rn > (2 - 1) * 10
+   	]]> -->
    	<insert id="writeDao">
    		insert into cic_board(bnum, bid, btitle, bcontent) 
    		values (cic_board_seq.nextval, #{param1},#{param2},#{param3})
@@ -46,5 +57,14 @@
    	<update id="modifyDao">
    		update cic_board set bid = #{param1}, btitle = #{param2}, bcontent = #{param3} where bnum = #{param4}
    	</update>
+   	
+   	<update id="boardhit">
+   		update cic_board set bhit = bhit+1 where bnum = #{param1}
+   	</update>
+   
+   <select id="concertDao" resultType="com.suhyeon.profile_web.dto.ConcertDto">
+   	select * from concert
+   </select>
+   
    </mapper>
    

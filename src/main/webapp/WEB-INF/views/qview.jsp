@@ -13,7 +13,17 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/write.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board.js"></script>
-
+<style>
+strong{
+margin-left:11em;
+}
+a{
+color:inherit;
+}
+a:hover{
+color:#ffd938;
+}
+</style>
 </head>
 <body>
 <%@ include file="include/header.jsp" %>
@@ -41,17 +51,10 @@
 <div class="btn_area">
 	<input type="submit" class="btn btn-primary btn-lg" id="btn" value="글수정">
 	<input type="button" class="btn btn-primary btn-lg" id="btn" value="글목록" onclick="javascripot:window.location='list'">
+	<a href="delete?bnum=${qview.bnum}"><strong>글 삭제</strong></a>
   </div>
 
-<footer class="text-muted py-5">
-  <div class="container">
-    <p class="float-end mb-1">
-      <a href="#">Back to top</a>
-    </p>
-    <p class="mb-1">티켓월드(주) &copy; WorldTicket All rights Reserved</p>
-    <p class="mb-0">TEL : 031-1234-1234 Email : <a href="mailto:shcnu16@gmail.com">shcnu16@gmail.com</a></a>.</p>
-  </div>
-  </form>
+<%@ include file="include/footer.jsp" %>
   
 </div><!-- content -->  
 </div><!-- wrapper -->  

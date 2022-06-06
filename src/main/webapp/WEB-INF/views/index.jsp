@@ -11,162 +11,133 @@
 <title>Index</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
+
+
 </head>
 <%@ include file="include/header.jsp" %>
 <%@ include file="index_banner.jsp" %>
 <body>
 
   <div class="album py-5 bg-light">
-    <div class="container">
+    <div class="container mt-4">
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
+      <div class="row justify-content-around">
+        <div class="col-4">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
+          	<img src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220504/20220504-42144_1.jpg">
+           	  <div class="card-body">
+                <p class="card-text">Festival SUM 2022<br>2022.06.04 ~ 2022.06.05<br>YES24 LIVE HALL</p>
+                 <div class="btn-group">
                   <a href="#" class="btn btn-outline-warning">예매하기</a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
         
-        <div class="col">
+        <div class="col-4">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <a href="#" class="btn btn-outline-warning">예매하기</a>
+          	<img src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220509/20220509-42164.jpg">
+           	  <div class="card-body">
+                <p class="card-text">2022 B.N.F Festival<br>2022.06.04 ~ 2022.06.05<br>올림픽공원내 88호수 수변무대</p>
+                 <div class="btn-group">
+                  <a href="#" class="btn btn-outline-warning">예매하기</a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
         
-        <div class="col">
+        <div class="col-4">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
+			<img src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220531/20220531-42413.jpg">
+             <div class="card-body">
+              <p class="card-text">Be My Cutie Pie<br>2022.06.26 ~ 2022.06.26<br>예림당아트홀</p>
               <div class="btn-group">
                 <a href="#" class="btn btn-outline-warning">예매하기</a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+		</div><!--row justify-content-around  -->
 
-        <div class="col">
+       <div class="row justify-content-around">
+        <div class="col-4 mt-5">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
+			<img src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220527/20220527-42353.jpg">
+             <div class="card-body">
+              <p class="card-text">[인천] 2022년 ‘Dream 55’ 나훈아 콘서트<br>2022.07.09 ~ 2022.07.09<br>인천남동체육관</p>
               <div class="btn-group">
                 <a href="#" class="btn btn-outline-warning">예매하기</a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+ 
+        <div class="col-4 mt-5">
+          <div class="card shadow-sm">
+			<img src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220518/20220518-42259.jpg">
+             <div class="card-body">
+              <p class="card-text">소란 여름 콘서트 ‘Surf!’<br>2022.06.24 ~ 2022.06.26<br>노들섬라이브하우스</p>
+              <div class="btn-group">
+                <a href="#" class="btn btn-outline-warning">예매하기</a>
+                </div>
+              </div>
+            </div>
+          </div>
         
-        <div class="col">
+        <div class="col-4 mt-5">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
+			<img src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220531/20220531-42357.jpg">
+             <div class="card-body">
+              <p class="card-text">2022 임영웅 콘서트 [IM HERO] - 인천<br>2022.07.15 ~ 2022.07.17<br>송도컨벤시아</p>
               <div class="btn-group">
                 <a href="#" class="btn btn-outline-warning">예매하기</a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <div class="col">
+ 		</div><!--row justify-content-around  -->
+ 		
+ 		<div class="row justify-content-around">
+        <div class="col-4 mt-5">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
+			<img src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220531/20220531-42417.jpg">
+             <div class="card-body">
+              <p class="card-text">WOOSUNG - MOTH EP SHOWCASE LIVE FROM SEOUL SPECIAL STAGE THE ROSE<br>2022.06.26 ~ 2022.06.26<br>YES24 LIVE HALL</p>
               <div class="btn-group">
                 <a href="#" class="btn btn-outline-warning">예매하기</a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="col">
+        <div class="col-4 mt-5">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
+			<img src="http://tkfile.yes24.com/upload2/PerfBlog/202204/20220404/20220404-36086.jpg">
+             <div class="card-body">
+              <p class="card-text">크리스토퍼 내한공연（CHRISTOPHER LIVE IN SEOUL）<br>2022.08.26 ~ 2022.08.28<br>YES24 LIVE HALL</p>
               <div class="btn-group">
                 <a href="#" class="btn btn-outline-warning">예매하기</a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
+        <div class="col-4 mt-5">
+          <div class="card shadow-sm">
+			<img src="http://tkfile.yes24.com/upload2/PerfBlog/202204/20220422/20220422-42056.jpg">
+             <div class="card-body">
+              <p class="card-text">[일산] 싱어게인2 TOP10 전국투어 콘서트<br>2022.07.02 ~ 2022.07.02<br>킨텍스 제1전시장 1A홀</p>
               <div class="btn-group">
                 <a href="#" class="btn btn-outline-warning">예매하기</a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                     <div class="d-flex justify-content-between align-items-center">
-                     <div class="btn-group">
-                     <a href="#" class="btn btn-outline-warning">예매하기</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    	</div><!--row justify-content-around  -->
+     
     </div>
   </div>
 
-<footer class="text-muted py-5">
-  <div class="container">
-    <p class="float-end mb-1">
-      <a href="#">Back to top</a>
-    </p>
-    <p class="mb-1">티켓월드(주) &copy; WorldTicket All rights Reserved</p>
-    <p class="mb-0">TEL : 031-1234-1234 Email : <a href="mailto:shcnu16@gmail.com">shcnu16@gmail.com</a></a>.</p>
-  </div>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>	
-
+<%@ include file="include/footer.jsp" %>
 </body>
 </html>

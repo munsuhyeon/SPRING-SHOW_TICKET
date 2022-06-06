@@ -1,8 +1,10 @@
 package com.suhyeon.profile_web.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.suhyeon.profile_web.dto.BoardDto;
+import com.suhyeon.profile_web.dto.ConcertDto;
 import com.suhyeon.profile_web.dto.MemberDto;
 
 public interface IDao {
@@ -20,8 +22,11 @@ public interface IDao {
 		public BoardDto viewDao(String bnum);// 게시판 글 보기
 		public void deleteDao(String bnum);//글 지우기
 		public void modifyDao(String bid, String btitle, String bcontent, String bnum);//글 수정
+		public void boardhit(String bnum);//게시판 조회수
 		//public void replyDao();//덧글쓰기
-		//public 
+		
+		//concert 테이블 조작
+		public ArrayList<ConcertDto> concertDao();
 		
 }
 

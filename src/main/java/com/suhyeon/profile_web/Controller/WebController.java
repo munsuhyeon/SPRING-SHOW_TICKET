@@ -1,5 +1,10 @@
 package com.suhyeon.profile_web.Controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,13 +14,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.suhyeon.profile_web.dao.IDao;
+import com.suhyeon.profile_web.dto.BoardDto;
 import com.suhyeon.profile_web.dto.MemberDto;
+
 
 @Controller
 public class WebController {
-	
+		
 	@Autowired
 	private SqlSession sqlSession;
 	
@@ -129,10 +137,12 @@ public class WebController {
 	public String list(Model model) {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
+		
 		model.addAttribute("list", dao.listDao()) ;
 		
 		return "list";
 	}
+	
 	@RequestMapping(value="/question")
 	public String question() {
 		return "question";
@@ -149,6 +159,7 @@ public class WebController {
 		public String qview(HttpServletRequest request, Model model) {
 			
 			IDao dao = sqlSession.getMapper(IDao.class);
+			dao.boardhit(request.getParameter("bnum"));
 			model.addAttribute("qview", dao.viewDao(request.getParameter("bnum")));
 			
 			return "qview";
@@ -170,6 +181,12 @@ public class WebController {
 		
 		return "redirect:list";
 	}
-	
+	@RequestMapping(value = "/concert_page")
+	public String concert_page(Model model) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		model.addAttribute("list", dao.concertDao()) ;
+		return "concert_page";
+	}
 	}
 

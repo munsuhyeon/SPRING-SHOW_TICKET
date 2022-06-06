@@ -44,15 +44,7 @@
 	<input type="button" class="btn btn-primary btn-lg" id="btn" value="취소" onclick="javascripot:window.location='list'">
   </div>
 
-<footer class="text-muted py-5">
-  <div class="container">
-    <p class="float-end mb-1">
-      <a href="#">Back to top</a>
-    </p>
-    <p class="mb-1">티켓월드(주) &copy; WorldTicket All rights Reserved</p>
-    <p class="mb-0">TEL : 031-1234-1234 Email : <a href="mailto:shcnu16@gmail.com">shcnu16@gmail.com</a></a>.</p>
-  </div>
-  </form>
+<%@ include file="include/footer.jsp" %>
   
 </div><!-- content -->  
 </div><!-- wrapper -->  
