@@ -62,8 +62,12 @@
    		update cic_board set bhit = bhit+1 where bnum = #{param1}
    	</update>
    
-   <select id="concertDao" resultType="com.suhyeon.profile_web.dto.ConcertDto">
-   	select * from concert
+   <select id="indexDao" resultType="com.suhyeon.profile_web.dto.ConcertDto">
+   	select * from concert order by cnum asc
+   </select>
+   
+   <select id="detailDao" resultType="com.suhyeon.profile_web.dto.ConcertDto">
+   	select * from concert where cnum = #{param1}
    </select>
    
    </mapper>

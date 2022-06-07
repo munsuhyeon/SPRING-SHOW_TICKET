@@ -28,12 +28,16 @@ public class WebController {
 	private SqlSession sqlSession;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
+	public String home(Model model) {
+		IDao dao = sqlSession.getMapper(IDao.class);
+		model.addAttribute("index",dao.indexDao());
 		return "index";
 	}
 	@RequestMapping(value = "/index")
-	public String index() {
+	public String index(Model model) {
 		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		model.addAttribute("index",dao.indexDao());
 		return "index";
 	}
 	@RequestMapping(value="/login")
@@ -181,12 +185,22 @@ public class WebController {
 		
 		return "redirect:list";
 	}
-	@RequestMapping(value = "/concert_page")
-	public String concert_page(Model model) {
-		
-		IDao dao = sqlSession.getMapper(IDao.class);
-		model.addAttribute("list", dao.concertDao()) ;
-		return "concert_page";
+	
+	@RequestMapping(value = "/seatpage")
+	public String seatpage() {
+
+		return "seatpage";
 	}
+	@RequestMapping(value = "/moveindex.do")
+	public String moveindex() {
+		
+		return "login";
+	}
+	@RequestMapping(value="/reserveOk")
+	public String reserveOk() {
+		
+		return "reserveOk";
+	}
+	
 	}
 

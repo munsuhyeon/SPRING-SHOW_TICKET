@@ -1,5 +1,6 @@
 package com.suhyeon.profile_web.dto;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 
@@ -8,8 +9,8 @@ public class ConcertDto {
 	private int cnum;//공연번호
 	private String ctitle;//공연제목
 	private String cplace;//공연장소
-	private String cstart_date;//공연시작날짜
-	private String cend_date;//공연종료날짜
+	private Timestamp cstart_date;//공연시작날짜
+	private Timestamp cend_date;//공연종료날짜
 	private String ctime;//공연시간
 	private String pic;//공연이미지주소
 	private String img1;//공연정보이미지주소
@@ -22,7 +23,7 @@ public class ConcertDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ConcertDto(int cnum, String ctitle, String cplace, String cstart_date, String cend_date, String ctime,
+	public ConcertDto(int cnum, String ctitle, String cplace, Timestamp cstart_date, Timestamp cend_date, String ctime,
 			String pic, String img1, String img2, String img3, String img4, String img5) {
 		super();
 		this.cnum = cnum;
@@ -56,16 +57,16 @@ public class ConcertDto {
 	public void setCplace(String cplace) {
 		this.cplace = cplace;
 	}
-	public String getCstart_date() {
+	public Timestamp getCstart_date() {
 		return cstart_date;
 	}
-	public void setCstart_date(String cstart_date) {
+	public void setCstart_date(Timestamp cstart_date) {
 		this.cstart_date = cstart_date;
 	}
-	public String getCend_date() {
+	public Timestamp getCend_date() {
 		return cend_date;
 	}
-	public void setCend_date(String cend_date) {
+	public void setCend_date(Timestamp cend_date) {
 		this.cend_date = cend_date;
 	}
 	public String getCtime() {

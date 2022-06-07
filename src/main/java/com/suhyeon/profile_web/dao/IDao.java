@@ -6,6 +6,7 @@ import java.util.List;
 import com.suhyeon.profile_web.dto.BoardDto;
 import com.suhyeon.profile_web.dto.ConcertDto;
 import com.suhyeon.profile_web.dto.MemberDto;
+import com.suhyeon.profile_web.dto.ReserveDto;
 
 public interface IDao {
 	
@@ -25,8 +26,9 @@ public interface IDao {
 		public void boardhit(String bnum);//게시판 조회수
 		//public void replyDao();//덧글쓰기
 		
-		//concert 테이블 조작
-		public ArrayList<ConcertDto> concertDao();
+		//index 공연정보 테이블
+		public ArrayList<ConcertDto> indexDao();
+		public ConcertDto detailDao(String cnum);
 		
 }
 
