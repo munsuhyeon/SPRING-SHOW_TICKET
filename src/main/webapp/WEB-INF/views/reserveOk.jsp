@@ -13,17 +13,28 @@
 <title>reserveOk</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>
 <body>
 <%@ include file="include/header.jsp" %>
-<%
-	request.setCharacterEncoding("UTF-8");
-	// 예약페이지에서 넘어온 좌석 정보를 받는다
-	String[]seats = request.getParameterValues("seat");
-	// 좌석정보를 임시로 저장할 A리스트 생성
+<script>
+	if(sessionStorage.getItem("date") == null){
+	alert("날짜를 선택해주세요")
+	location.href = "index"}
+</script>
+<%	String[]seats = request.getParameterValues("seat");
+	if(seats == null){ %>
+<script>
+	alert("좌석을 선택해주세요")
+	location.href = "index"
+</script>
+<%}else{
 	List<String> list = new ArrayList<>();
 	boolean check = true;
-	// app에 B리스트가 있다면 커내와서 A에 저장
+	// app에 B리스트가 있다면 꺼내와서 A에 저장
 	if(application.getAttribute("seats") != null){
 		list = (List<String>)application.getAttribute("seats");
 	}
@@ -42,22 +53,52 @@
 		}
 		application.setAttribute("seats", list);
 	}
-	
-%>
-<table  width="100%" border="0" cellspacing="0" cellpadding="10">
+}
+	%>
+<table width="100%" border="0" cellspacing="0" cellpadding="10">
 	<tr>
 		<td height="500" bgcolor="#F8F9FA" align="center">
 			<table border="0" cellspacing="0" cellpadding="10">
-				<tr><td><h3>구매한 좌석</h3></td></tr>
-					<tr><td>
-					<% for(int i=0; i<seats.length; i++){ %>
-					<%= seats[i] %>
-					<%} %>
-				</td></tr>               			
-			</table>  
+				<form action="pay" method="get">
+					<tr>
+						<td>
+							<div align="center">
+								<tr><td align="center"><h3>선택한 공연 정보</h3></td></tr>
+								<tr><td align="center">
+								<input type="hidden" name="bid" value="<%=session.getAttribute("id")%>" >
+								공연 제목 : ${param.title}<br><input type="hidden" value="${param.title}" name="btitle">
+								공연 장소 : ${param.place}<br><input type="hidden" value="${param.place}" name="bplace">
+								선택한 날짜 :<script>document.write(sessionStorage.getItem("date"));</script><br>
+								공연 시간 : ${param.time}분<br><input type="hidden" value="${param.time}" name="btime">
+								
+								<% if(seats != null){%>
+								<%! int num = 0; %>
+								<% num = Integer.parseInt(request.getParameter("price"));%> 	
+								가격 : <%=num%>원 * <%=seats.length%>장 = <%=num * seats.length%>원<br>
+								<%} %>
+								<input type="hidden" value="<%= num * seats.length %>"name="bprice">
+								</td></tr>
+								<tr><td>&nbsp;</td></tr>
+								<tr><td align="center"><h3>선택한 좌석</h3></td></tr>
+								<tr><td align="center">
+								<%	if(seats != null){ 
+									for(int i=0; i<seats.length; i++){%>	
+								<%= seats[i] %>
+								<%}
+									} %>	
+											
+								</td>
+								</tr>
+								<tr><td>&nbsp;</td></tr>
+								<tr><td align="center"><input type="submit" value="구매하기" class="btn btn-warning"></td></tr>
+							</div>
+						</td>
+					</tr>
+			</table>
 		</td>
-	</tr>        
-</table>
+	</tr>
+</table>	
          <%@ include file="include/footer.jsp" %>	
 </body>
+
 </html>

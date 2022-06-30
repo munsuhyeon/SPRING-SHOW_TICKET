@@ -27,8 +27,11 @@ public interface IDao {
 		//public void replyDao();//덧글쓰기
 		
 		//index 공연정보 테이블
-		public ArrayList<ConcertDto> indexDao();
-		public ConcertDto detailDao(String cnum);
+		public ArrayList<ConcertDto> indexDao();//인덱스 공연리스트
+		public ConcertDto detailDao(String cnum);//예매상세페이지
 		
+		//reserve 공연예약 테이블
+		public void reserveDao(String bid, String btitle, String bplace, String btime, String bprice, String seat);//예약정보 저장
+		public void checkboxDao(String ck);
 }
 

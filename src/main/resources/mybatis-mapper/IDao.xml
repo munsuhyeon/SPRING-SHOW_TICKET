@@ -63,12 +63,21 @@
    	</update>
    
    <select id="indexDao" resultType="com.suhyeon.profile_web.dto.ConcertDto">
-   	select * from concert order by cnum asc
+  		select * from concert order by cnum asc
    </select>
    
    <select id="detailDao" resultType="com.suhyeon.profile_web.dto.ConcertDto">
    	select * from concert where cnum = #{param1}
    </select>
+   
+   <insert id="reserveDao">
+   		insert into reserve(bid,btitle, bplace, btime, bprice, bseat) 
+   		values (#{param1},#{param2},#{param3},#{param4},#{param5},#{param6})
+   </insert>
+   
+   <insert id="checkboxDao">
+   	insert into checkbox(ck)vlaues(#{param1})
+   </insert>
    
    </mapper>
    

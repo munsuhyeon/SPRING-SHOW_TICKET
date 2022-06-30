@@ -2,15 +2,15 @@ package com.suhyeon.profile_web.dto;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-
+import java.util.Date;
 
 public class ConcertDto {
 	
 	private int cnum;//공연번호
 	private String ctitle;//공연제목
 	private String cplace;//공연장소
-	private Timestamp cstart_date;//공연시작날짜
-	private Timestamp cend_date;//공연종료날짜
+	private Date cstartdate;//공연시작날짜
+	private Date cenddate;//공연종료날짜
 	private String ctime;//공연시간
 	private String pic;//공연이미지주소
 	private String img1;//공연정보이미지주소
@@ -18,19 +18,19 @@ public class ConcertDto {
 	private String img3;//공연정보이미지주소
 	private String img4;//공연정보이미지주소
 	private String img5;//공연정보이미지주소
-	
+	private String cprice;//공연 가격
 	public ConcertDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ConcertDto(int cnum, String ctitle, String cplace, Timestamp cstart_date, Timestamp cend_date, String ctime,
-			String pic, String img1, String img2, String img3, String img4, String img5) {
+	public ConcertDto(int cnum, String ctitle, String cplace, Date cstartdate, Date cenddate, String ctime,
+			String pic, String img1, String img2, String img3, String img4, String img5, String cprice) {
 		super();
 		this.cnum = cnum;
 		this.ctitle = ctitle;
 		this.cplace = cplace;
-		this.cstart_date = cstart_date;
-		this.cend_date = cend_date;
+		this.cstartdate = cstartdate;
+		this.cenddate = cenddate;
 		this.ctime = ctime;
 		this.pic = pic;
 		this.img1 = img1;
@@ -38,6 +38,7 @@ public class ConcertDto {
 		this.img3 = img3;
 		this.img4 = img4;
 		this.img5 = img5;
+		this.cprice = cprice;
 	}
 	public int getCnum() {
 		return cnum;
@@ -57,17 +58,17 @@ public class ConcertDto {
 	public void setCplace(String cplace) {
 		this.cplace = cplace;
 	}
-	public Timestamp getCstart_date() {
-		return cstart_date;
+	public Date getcstartdate() {
+		return cstartdate;
 	}
-	public void setCstart_date(Timestamp cstart_date) {
-		this.cstart_date = cstart_date;
+	public void setcstartdate(Date cstartdate) {
+		this.cstartdate = cstartdate;
 	}
-	public Timestamp getCend_date() {
-		return cend_date;
+	public Date getcenddate() {
+		return cenddate;
 	}
-	public void setCend_date(Timestamp cend_date) {
-		this.cend_date = cend_date;
+	public void setcenddate(Date cenddate) {
+		this.cenddate = cenddate;
 	}
 	public String getCtime() {
 		return ctime;
@@ -110,6 +111,12 @@ public class ConcertDto {
 	}
 	public void setImg5(String img5) {
 		this.img5 = img5;
+	}
+	public String getCprice() {
+		return cprice;
+	}
+	public void setCprice(String cprice) {
+		this.cprice = cprice;
 	}
 	
 	

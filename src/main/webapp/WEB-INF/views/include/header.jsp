@@ -20,9 +20,9 @@
 		<h2 class="hide">대메뉴</h2>
 		<nav>
 			<ul>
-				<li><a href="concert_page">콘서트</a></li>
-				<li><a href="musical_page">뮤지컬</a></li>
-				<li><a href="drama_page">연극</a></li>
+				<li><a href="concert">콘서트</a></li>
+				<li><a href="musical">뮤지컬</a></li>
+				<li><a href="#">연극</a></li>
 			</ul>
 		</nav>			
 			<ul class="spot">

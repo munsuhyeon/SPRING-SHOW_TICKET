@@ -13,7 +13,16 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/write.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board.js"></script>
-
+<%
+		if (request.getSession().getAttribute("id") == null) {
+	%>
+	<script>
+		alert("로그인이 필요한 작업입니다 로그인을 진행해 주세요!")
+		location.href = "moveindex.do"
+	</script>
+	<%
+		}
+	%>
 </head>
 <body>
 <%@ include file="include/header.jsp" %>
