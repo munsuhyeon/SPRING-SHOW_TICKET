@@ -103,6 +103,7 @@ border:1px solid #FFBF00;
 header > div .search_menu li{
 float:left;
 position:relative;
+right:13em;
 }
 header > div > ul li .search_bar{
 position:absolute;

@@ -18,13 +18,13 @@
 	<div>
 		<h1><a href="${pageContext.request.contextPath}/"><img src="<c:url value="/resources/img/mainlogo.png"/>"></a></h1>
 		<h2 class="hide">대메뉴</h2>
-		<nav>
+		<!--  <nav>
 			<ul>
 				<li><a href="concert">콘서트</a></li>
 				<li><a href="musical">뮤지컬</a></li>
-				<li><a href="#">연극</a></li>
+				<li><a href="drama">연극</a></li>
 			</ul>
-		</nav>			
+		</nav>-->			
 			<ul class="spot">
 				<li>
 				<% 	String sessionId = (String)session.getAttribute("id");
@@ -45,18 +45,25 @@
 				%>
 					<a href="join">회원가입</a>
 				<% 
-					} else { 
+					} else if(sessionId.equals("admin")){
+						%>
+						<a href="admin_customer">관리자</a>
+					<%	
+					}else { 
 				%>
-					<a href="infoModify">내정보</a>
+					<a href="mypage"><%= sessionId%>님</a>
 				<%
 					} 
 				%>	
 				</li>
 				<li><a href="list">고객센터</a></li>
+				
 			</ul>
 			<ul class="search_menu">
-				<li><input type="text" placeholder="검색어 입력" class="search_bar"></li>
-				<li><button type="submit" name="searchbtn"class="searchbtn">검색</button></li>
+				<form action="search_result" method="post">
+					<li><input type="text"  name="title" placeholder="검색어 입력" class="search_bar"></li>
+					<li><button type="submit" class="searchbtn">검색</button></li>
+				</form>
 			</ul>
 	</div>
 </header>

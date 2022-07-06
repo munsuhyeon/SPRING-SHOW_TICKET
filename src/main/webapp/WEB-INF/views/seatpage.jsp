@@ -5,12 +5,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
-<%
-	MemberDto login = (MemberDto) session.getAttribute("login");
-	if(login != null)
-		//System.out.println(login.toString());
-
-%>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,28 +16,13 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/seat.css">
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/magic-input/dist/magic-input.min.css">
-<style type="text/css">
-.abc{
- letter-spacing: -5.5px;
-}
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- date picket -->
+<link href="jquery-ui.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script><style>
 </style>
 </head>
-<script>
-function CountChecked(field){
-	var checkBox = document.getElementsByName("seat"); //name값 체크박스를 불러옴
-	var checkCount = 0; //초기값 0으로 설정
-	for(var i=0; i<checkBox.length; i++){//반복문으로 초기값,조건식,증감식 설정
-		if(checkBox[i].checked){ // 조건문으로 checkBox가 checked 됐을 경우
-			checkCount++; // 1씩 증가
-		}
-	}
-	if(checkCount > 4){ // 선택한 체크가 4개보다 클 경우
-		alert("1인당 최대구매 4장까지만 가능합니다"); // alert를 띄움
-		field.checked = false; //false를 주어 alert를 띄운 뒤에 check되지 않도록 설정
-		return false;
-		}
-	}
-	</script>
 <body>
 <%@ include file="include/header.jsp" %>
 <%
@@ -56,18 +35,10 @@ function CountChecked(field){
 	<%
 		}
 	%>	
-	
+</script>
 	<div class="wrapper">
 	<div class="date_area" align="center">
-	  <form action="reserveOk" method="get" name="reserve">
-	<h4>날짜 선택하기</h4>
-		<select name="date" id="date" onchange="changeFn()">
-			<option disabled selected>날짜를 선택하세요</option>
-			<option value="start"><fmt:formatDate pattern="yyyy-MM-dd" value="${seatpage.cstartdate}"/></option>
-			<option value="end"><fmt:formatDate pattern="yyyy-MM-dd" value="${seatpage.cenddate}"/></option>
-		</select>
-	</div>
-	
+	 <form action="reserveOk" method="post" name="reserve">
 	<table width="100%" border="0" cellspacing="0" cellpadding="10">
 		<tr>
 			<td height="500" align="center">
@@ -77,6 +48,7 @@ function CountChecked(field){
 							<div align="left">
 							<div class="card" style="width: 18rem;"><!-- card -->
 			  				<img src="${seatpage.pic}" class="card-img-top" alt="...">
+			  				<input type="hidden" value="${seatpage.pic}" name="pic">
 			  				<div class="card-body">
 				    		<p class="card-text" align="center">${seatpage.ctitle}<br>
 				    		<input type="hidden" value="${seatpage.ctitle}" name="title">
@@ -90,32 +62,38 @@ function CountChecked(field){
 							</div>
 							</div><!-- card -->
 						</td>
-					
+						
 						<td>
 						<div align="center">
-							<h4>좌석을 체크한 후에 구매하기 버튼을 클릭하세요</h4>
-								<hr>
-									  <!--  <form action="reserveOk" method="post" name="reserve">-->
-										<b>좌석 배치도</b><br/>
-										&nbsp;&nbsp;
-										<% for(char c = 'A'; c <= 'Z'; c++){ %>
-										<small class="abc"><%=c %></small>&nbsp;&nbsp;
-										<%} %>	
-										<br/>
-										<% for(int i = 1; i<=6; i++){ %>
-										<%=i %>
-										<% for(char c='A'; c<='Z'; c++) {%>
-										<input type="checkbox" name="seat" onClick="CountChecked(this);" class="mgc mgc-warning mgc-lg" value="<%=c %>-<%=i %>"  <c:if test="${item.checkbox eq 'Y'}">checked</c:if> >							
-										<%} %>
-										<br/>
-										<%= i == 3 ? "<br/>" : "" %>
-										<%} %>	 	
-								<br/>
-								<input type="submit" value="구매하기" class="btn btn-warning" onclick="reserveConfirm()">
-								<input type="reset" value="초기화" class="btn btn-warning">
-							</form>
-						</div><!-- table-->
+							<h4>날짜 선택하기</h4>
+							<hr>
+								<select name="date" id="date" onchange="changeFn()">
+									<option disabled selected align="center">-- 선택 --</option>
+									<option value="<fmt:formatDate pattern="yyyy-MM-dd" value="${seatpage.cstartdate}"/>" name="date" align="center"><fmt:formatDate pattern="yyyy-MM-dd" value="${seatpage.cstartdate}"/></option>
+									<option value="<fmt:formatDate pattern="yyyy-MM-dd" value="${seatpage.cenddate}"/>" name="date" align="center"><fmt:formatDate pattern="yyyy-MM-dd" value="${seatpage.cenddate}"/></option>
+								</select>
+							</div>
+						</td>
 						
+						<td>
+						<div align="center">
+							<h4>티켓 수 선택</h4>
+								<hr>
+									<select name="ticket" id="ticket" onchange="ticketFn()">
+										<option disabled selected align="center">-- 선택 --</option>
+										<option value="1" name="ticket" align="center">1장</option>
+										<option value="2" name="ticket" align="center">2장</option>
+										<option value="3" name="ticket" align="center">3장</option>
+										<option value="4" name="ticket" align="center">4장</option>
+									</select>
+						</div>	 	
+						</td>
+					</tr>
+					
+					<tr>
+					<td align="center" colspan="3">
+								<input type="submit" value="구매하기" class="btn btn-warning">
+								<input type="reset" value="초기화" class="btn btn-warning">
 						</td>
 					</tr>
 					</form>
@@ -124,6 +102,7 @@ function CountChecked(field){
 		</tr>        
 	</table>  	
 </div>
+
 <%@ include file="include/footer.jsp" %>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>		
 </body>
@@ -133,7 +112,13 @@ function CountChecked(field){
 		var str = target.options[target.selectedIndex].text;
 		//alert(str);
 		sessionStorage.setItem("date",str);
-		//console.log(sessionStorage.getItem("data"));
+	}
+	function ticketFn(){
+		var ticket = document.getElementById("ticket");
+		var text = ticket.options[ticket.selectedIndex].text;
+	//	var value = ticket.options[ticket.selectedIndex].value;
+		sessionStorage.setItem("ticket_text",text)
+	//	sessionStorage.setItem("ticket_value",value)
 	}
 	</script>
 </html>

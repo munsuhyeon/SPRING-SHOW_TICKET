@@ -49,8 +49,8 @@
 </div>
 
 <div class="btn_area">
-	<input type="button" class="btn btn-primary btn-lg" id="btn" value="등록" onclick="boardConfirm()">
-	<input type="button" class="btn btn-primary btn-lg" id="btn" value="취소" onclick="javascripot:window.location='list'">
+	<input type="button" class="btn btn-warning" id="btn" value="등록" onclick="boardConfirm()">
+	<input type="button" class="btn btn-warning" id="btn" value="취소" onclick="javascripot:window.location='list'">
   </div>
 
 <%@ include file="include/footer.jsp" %>

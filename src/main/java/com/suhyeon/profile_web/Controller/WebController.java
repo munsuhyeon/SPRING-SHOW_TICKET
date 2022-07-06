@@ -25,6 +25,7 @@ import com.suhyeon.profile_web.dao.IDao;
 import com.suhyeon.profile_web.dto.BoardDto;
 import com.suhyeon.profile_web.dto.ConcertDto;
 import com.suhyeon.profile_web.dto.MemberDto;
+import com.suhyeon.profile_web.dto.ReserveDto;
 
 
 @Controller
@@ -87,7 +88,7 @@ public class WebController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		int checkIdFlag = dao.checkIdDao(request.getParameter("id"));
-		//입력받은 아이디가 DB에 존재하면 1, 아니며면 0 반환
+		//입력받은 아이디가 DB에 존재하면 1, 아니면 0 반환
 		int checkPwFlag = dao.checkPwDao(request.getParameter("id"), request.getParameter("pw"));
 		//입력받은 아이디와 그 아이디의 비밀번호가 일치하면 1, 아니면 0이 반환
 		
@@ -109,7 +110,6 @@ public class WebController {
 			model.addAttribute("mname",memberdto.getMname());
 			model.addAttribute("mid",memberdto.getMid());
 		}
-		
 		return "loginOk";
 	}
 	@RequestMapping(value="/logout")
@@ -129,7 +129,7 @@ public class WebController {
 		MemberDto memberDto = dao.loginOkDao(sessionId);
 		
 		model.addAttribute("memberDto",memberDto);
-		
+		//System.out.println(sessionId);
 		return "infoModify";
 	}
 	@RequestMapping(value="/infoModifyOk")
@@ -171,10 +171,14 @@ public class WebController {
 	@RequestMapping(value="/qview")
 		public String qview(HttpServletRequest request, Model model) {
 			
+			HttpSession session = request.getSession();
 			IDao dao = sqlSession.getMapper(IDao.class);
 			dao.boardhit(request.getParameter("bnum"));
 			model.addAttribute("qview", dao.viewDao(request.getParameter("bnum")));
+			String sessionId = (String)session.getAttribute("id");
+			MemberDto memberDto = dao.loginOkDao(sessionId);
 			
+			model.addAttribute("memberDto",memberDto);
 			return "qview";
 		}
 	@RequestMapping(value="/delete")
@@ -208,34 +212,107 @@ public class WebController {
 		return "login";
 	}
 	@RequestMapping(value="/reserveOk")
-	public String reserveOk(HttpServletRequest request, Model model) {
+	public String reserveOk(HttpServletRequest request) {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		HttpSession session = request.getSession();
+		String ticket = request.getParameter("ticket");
+		String date = request.getParameter("date");
+		String price = request.getParameter("price");
+		session.setAttribute("ticket", ticket);
+		session.setAttribute("date", date);
+		session.setAttribute("price", price);
+		//System.out.println(session.getAttribute("price"));
 		return "reserveOk";
 	}
-	@RequestMapping(value="/musical")
-	public String cmusical() {
-		return "musical";
-	}
-	@RequestMapping(value="/test")
-	public String test(HttpServletRequest request) {
-		//IDao dao = sqlSession.getMapper(IDao.class);
-		//dao.checkboxDao(request.getParameter("ck"));
-		return "test";
-	}
-	//@RequestMapping(value="/concert")
-	//public String concert(){
-
-	//	return "concert";
-	//}
-	
 	@RequestMapping(value="/pay")
-	public String pay(HttpServletRequest request) {
+	public String pay(HttpServletRequest request, Model model) {
+
+		IDao dao = sqlSession.getMapper(IDao.class);
+		dao.reserveDao(request.getParameter("bid"),request.getParameter("btitle"), request.getParameter("bplace"),request.getParameter("btime"),
+				 Integer.parseInt(request.getParameter("bprice")),Integer.parseInt(request.getParameter("bcount")),request.getParameter("bpic"));
+		
+		return "pay";
+	}
+	@RequestMapping(value="/reservelist")
+	public String reservelistert(HttpServletRequest request, Model model) {
+		
+		HttpSession session = request.getSession();
+		
+		String sessionId = (String)session.getAttribute("id");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
-		dao.reserveDao(request.getParameter("bid"),request.getParameter("btitle"), request.getParameter("bplace"), 
-				 request.getParameter("btime"),request.getParameter("bprice"),request.getParameter("bseat"));
-			return "pay";
+		
+		ArrayList<ReserveDto> reservedto = dao.reservelistDao(sessionId);
+		model.addAttribute("reservedto",reservedto);
+		
+		return "reservelist";
 	}
+	@RequestMapping(value="/mypage")
+	public String mypage() {
+
+		return "mypage";
+	}
+	@RequestMapping(value="/searchid")
+	public String searchid() {
+
+		return "searchid";
+	}
+	@RequestMapping(value="/searchpw")
+	public String searchpw() {
+
+		return "searchpw";
+	}
+	@RequestMapping(value="/resultid", method = RequestMethod.POST)
+	public String resultid(HttpServletRequest request, Model model) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		int findIdFlag = dao.findIdDao(request.getParameter("name"), request.getParameter("email"));
+		//입력받은 이름과 그 이름의 이메일이 일치하면 1, 아니면 0이 반환
+		
+		model.addAttribute("findIdFlag",findIdFlag);
+		
+		if(findIdFlag == 1) {
+			MemberDto memberDto = dao.findIdOkDao(request.getParameter("name"), request.getParameter("email"));
+			model.addAttribute("memberDto",memberDto);
+		}
+		
+		return "resultid";
+	}
+	@RequestMapping(value="/resultpw", method = RequestMethod.POST)
+	public String resultpw(HttpServletRequest request, Model model) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		int findPwFlag = dao.findPwDao(request.getParameter("id"),request.getParameter("name"), request.getParameter("email"));
+		
+		model.addAttribute("findPwFlag",findPwFlag);
+		
+		if(findPwFlag == 1) {
+			MemberDto memberDto = dao.findPwOkDao(request.getParameter("id"),request.getParameter("name"), request.getParameter("email"));
+			model.addAttribute("memberDto",memberDto);
+		}
+		
+		return "resultpw";
+	}
+	@RequestMapping(value="/refund")
+	public String refund(HttpServletRequest request) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		dao.refundDao(request.getParameter("bstate"),request.getParameter("bnum"));
+
+		return "redirect:reservelist";
+	}
+	@RequestMapping(value="/search_result")
+	public String search_result(HttpServletRequest request, Model model) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+
+		List<ConcertDto> concertDto = dao.searchresultDao(request.getParameter("title"));
+		model.addAttribute("concertDto",concertDto);
+		
+		return "search_result";
+	}
+	
 	}
 

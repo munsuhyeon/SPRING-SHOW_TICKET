@@ -15,6 +15,10 @@ public interface IDao {
 		public MemberDto loginOkDao(String mid); // 로그인 성공 여부 체크
 		public int checkIdDao(String mid); // 아이디 존재 여부 체크
 		public int checkPwDao(String mid, String mpw); // 아이디와 비밀번호 일치여부 확인
+		public int findIdDao(String mname, String memail);// 이름과 이메일 일치여부 확인
+		public int findPwDao(String mid, String mname, String memail); //아이디,이름,이메일 일치여부 확인
+		public MemberDto findPwOkDao(String mid, String mname, String memail);
+		public MemberDto findIdOkDao(String mname, String memail);
 		public void memberInfoModifyOkDao(String mpw, String mname, String memail, String mphone, String mid); // 회원정보 수정
 		
 		//cic_board 조작 dao
@@ -31,7 +35,11 @@ public interface IDao {
 		public ConcertDto detailDao(String cnum);//예매상세페이지
 		
 		//reserve 공연예약 테이블
-		public void reserveDao(String bid, String btitle, String bplace, String btime, String bprice, String seat);//예약정보 저장
-		public void checkboxDao(String ck);
+		//public ArrayList<ReserveDto> reservelistDao(String bid, String btitle, String bplace, String btime, int bprice, int bcount);//예약정보 list
+		public void reserveDao(String bid, String btitle, String bplace, String btime, int bprice, int bcount, String bpic);//예약정보 저장
+		public ArrayList<ReserveDto> reservelistDao(String bid);
+		public void refundDao(String bstate, String bnum);
+		public List<ConcertDto> searchresultDao(String btitle);
+
 }
 

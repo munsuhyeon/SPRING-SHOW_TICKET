@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+   <mapper namespace="com.suhyeon.profile_web.dao.ADao">
+   
+   <select id="customerlistDao" resultType="com.suhyeon.profile_web.dto.MemberDto">
+   		SELECT mid, mname, mphone, memail, mdate FROM mymember order by mdate asc
+   </select>
+   
+   <select id="customerinfoDao" resultType="com.suhyeon.profile_web.dto.MemberDto">
+   		SELECT * FROM mymember where mid = #{param1}
+   </select>
+   
+   <update id="write_replyDao">
+   		update cic_board set  btitle=#{param1}, bcontent=#{param2}, breply=#{param3} where bnum=#{param4}
+   </update>
+   
+   <select id="reservelistDao" resultType="com.suhyeon.profile_web.dto.ReserveDto">
+   		SELECT * FROM reserve order by bnum asc
+   </select>
+   
+   <delete id="admindeleteDao">
+   		DELETE FROM reserve WHERE bnum = #{param1}
+   </delete>
+   
+   <insert id="registerDao">
+   		INSERT INTO concert(cnum, ctitle, cplace, cstartdate, cenddate, ctime, pic, cprice)
+   		values (concert_seq.nextval, #{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7})
+   </insert>
+   
+   <select id="checkRegister" resultType="int">
+   		SELECT COUNT(*) FROM concert WHERE ctitle = #{param1}
+   </select>
+   
+   <select id="concertlistDao" resultType="com.suhyeon.profile_web.dto.ConcertDto">
+  		select * from concert order by cnum desc
+   </select>
+   
+   <delete id="reservedeleteDao">
+   		DELETE FROM reserve WHERE btitle = #{param1}
+   </delete>
+   
+   <delete id="concertdeleteDao">
+   		DELETE FROM concert WHERE cnum = #{param1}
+   </delete>
+   
+   </mapper>

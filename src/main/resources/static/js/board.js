@@ -24,3 +24,5 @@ function boardConfirm() {
 
    document.reg_frm.submit();
 }
+
+

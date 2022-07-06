@@ -31,7 +31,8 @@
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" href="#">비밀번호 찾기</a>
+      <a class="underlineHover" href="searchid">아이디 찾기</a> &nbsp;
+      <a class="underlineHover" href="searchpw">비밀번호 찾기</a>
     </div>
 
   </div>

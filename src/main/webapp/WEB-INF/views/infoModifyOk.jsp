@@ -13,48 +13,62 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/infomodify.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/mymember.js"></script>
+<style>
+html,body{
+height:100%;
+width:100%;
+}
+</style>
 </head>
 <%@ include file="include/header.jsp" %>
 <body>
 
-<table  width="100%" border="0" cellspacing="0" cellpadding="10">
+<table height="80%"  width="100%" border="0" cellspacing="0" cellpadding="10">
             <tr>
-               	<td height="500" bgcolor="#F8F9FA" align="center">
+               	<td height="100%" bgcolor="#F8F9FA" align="center">
                		<table border="0" cellspacing="0" cellpadding="10">
                			<tr>
-							<td colspan="2" class="td-type01">${memberDto.mid}님의 회원정보를 수정하였습니다.</td>
+							<td colspan="2" class="td-type01"  align="center"><h5>${memberDto.mid}님의 회원정보를 수정하였습니다.</h5></td>
 						</tr>
+						<tr><td>&nbsp;</td></tr>
                			<form action="infoModifyOk" method="post" name="reg_frm">
                				<tr>
                				<td class="td-type01">아이디</td>
                				<td><input id="input01" type="text" name="id" value="${memberDto.mid}" readonly></td>
                				</tr>
+               				<tr><td>&nbsp;</td></tr>
                				<tr>
                				<td class="td-type01">비밀번호</td>
                				<td><input id="input01" type="password" name="pw"></td>
                				</tr>
+               				<tr><td>&nbsp;</td></tr>
                				<tr>
                				<td class="td-type01">비밀번호 확인</td>
                				<td><input id="input01" type="password" name="pw_check"></td>
                				</tr>
+               				<tr><td>&nbsp;</td></tr>
                				<tr>
                				<td class="td-type01">이름</td>
                				<td><input id="input01" type="text" name="name" value="${memberDto.mname }"></td>
                				</tr>
+               				<tr><td>&nbsp;</td></tr>
                				<tr>
                				<td class="td-type01">이메일</td>
                				<td><input id="input01" type="text" name="email" value="${memberDto.memail }"></td>
                				</tr>
+               				<tr><td>&nbsp;</td></tr>
                				<tr>
                				<td class="td-type01">전화번호</td>
                				<td><input id="input01" type="text" name="date" value="${memberDto.mphone}" readonly></td>
                				</tr>
+               				<tr><td>&nbsp;</td></tr>
                				<tr>
-               				<td colspan="2">
-               				<input id="button01" type="button" value="정보수정" class="btn btn-primary" onclick="infoConfirm()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               				<input id="button01" type="button" value="취소" class="btn btn-primary" onclick="javascript:window.location='index'">
+               				<td colspan="2"  align="center">
+               				<input id="button01" type="button" value="정보수정" class="btn btn-warning" onclick="infoConfirm()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               				<input id="button01" type="button" value="취소" class="btn btn-warning" onclick="javascript:window.location='index'">
                				</td>
                				</tr>
+               				<tr><td>&nbsp;</td></tr>
                			</form>
                		</table>  
 		        </td>

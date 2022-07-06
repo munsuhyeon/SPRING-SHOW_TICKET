@@ -17,78 +17,84 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 </head>
 <body>
 <%@ include file="include/header.jsp" %>
-<script>
-	if(sessionStorage.getItem("date") == null){
-	alert("날짜를 선택해주세요")
-	location.href = "index"}
-</script>
-<%	String[]seats = request.getParameterValues("seat");
-	if(seats == null){ %>
-<script>
-	alert("좌석을 선택해주세요")
-	location.href = "index"
-</script>
-<%}else{
-	List<String> list = new ArrayList<>();
-	boolean check = true;
-	// app에 B리스트가 있다면 꺼내와서 A에 저장
-	if(application.getAttribute("seats") != null){
-		list = (List<String>)application.getAttribute("seats");
-	}
-	//A리스트와 좌석 정보를 비교해서 중복된 좌석이 아니라면 사본 리스트를 생성하고, 하나씩 추가
-	for(String s : seats){
-		if(list.contains(s)){
-			check = false;
-			break;
-		}
-	}
-	//사본리스트와 seat와 길이가 같다면 중복이 없다는 뜻
-	//사본리스트를 A리스트에 전체 추가하고 app에 저장
-	if(check){
-		for(int i=0; i>seats.length; i++){
-			list.add(seats[i]);
-		}
-		application.setAttribute("seats", list);
-	}
-}
+<%
+		if (session.getAttribute("date") == null) {
 	%>
+	<script>
+		alert("공연날짜를 선택해주세요")
+		location.href = "index"
+	</script>
+	<%
+		}
+	%>	
+	<%
+		if (session.getAttribute("ticket") == null) {
+	%>
+	<script>
+		alert("티켓수를 선택해주세요")
+		location.href = "index"
+	</script>
+	<%
+		}
+	%>	
+	<% String text = (String)session.getAttribute("date");%>
+	
 <table width="100%" border="0" cellspacing="0" cellpadding="10">
 	<tr>
 		<td height="500" bgcolor="#F8F9FA" align="center">
 			<table border="0" cellspacing="0" cellpadding="10">
-				<form action="pay" method="get">
+				<form action="pay" method="post">
+
 					<tr>
 						<td>
 							<div align="center">
 								<tr><td align="center"><h3>선택한 공연 정보</h3></td></tr>
 								<tr><td align="center">
+								<input type="hidden" name="bpic" value="${param.pic}" >
 								<input type="hidden" name="bid" value="<%=session.getAttribute("id")%>" >
-								공연 제목 : ${param.title}<br><input type="hidden" value="${param.title}" name="btitle">
+								<hr>공연 제목 : ${param.title}<br><input type="hidden" value="${param.title}" name="btitle">
 								공연 장소 : ${param.place}<br><input type="hidden" value="${param.place}" name="bplace">
-								선택한 날짜 :<script>document.write(sessionStorage.getItem("date"));</script><br>
+								선택한 날짜 :<%=session.getAttribute("date")%><br>
 								공연 시간 : ${param.time}분<br><input type="hidden" value="${param.time}" name="btime">
 								
-								<% if(seats != null){%>
-								<%! int num = 0; %>
-								<% num = Integer.parseInt(request.getParameter("price"));%> 	
-								가격 : <%=num%>원 * <%=seats.length%>장 = <%=num * seats.length%>원<br>
-								<%} %>
-								<input type="hidden" value="<%= num * seats.length %>"name="bprice">
+								<%	String aaa = (String)session.getAttribute("ticket");
+									int count = 0;			
+									if(aaa != null){
+												count = Integer.parseInt(aaa);
+											}
+								%>	
+								<%	String temp = (String)session.getAttribute("price");
+									int price = 0;			
+									if(temp != null){
+												price = Integer.parseInt(temp);
+											}
+								%>
+								<script type="text/javascript">
+									function resultcommas() {
+									
+									    var number = <%=price*count %>;
+									    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+									}
+									var str = resultcommas();
+									</script>
+									<script type="text/javascript">
+										function ticketcommas() {
+										
+										    var number = "<c:out value='${param.price}'/>";
+										    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+										}
+										var price = ticketcommas();
+										</script>
+								가격 : <script>document.write(price);</script> * <script>document.write(sessionStorage.getItem("ticket_text"));</script> = <script type="text/javascript">document.write(str);</script>원
+								<input type="hidden" value="<%=price*count %>"name="bprice">
+								<input type="hidden" value="<%=count %>"name="bcount">
 								</td></tr>
 								<tr><td>&nbsp;</td></tr>
-								<tr><td align="center"><h3>선택한 좌석</h3></td></tr>
-								<tr><td align="center">
-								<%	if(seats != null){ 
-									for(int i=0; i<seats.length; i++){%>	
-								<%= seats[i] %>
-								<%}
-									} %>	
-											
-								</td>
-								</tr>
+
 								<tr><td>&nbsp;</td></tr>
 								<tr><td align="center"><input type="submit" value="구매하기" class="btn btn-warning"></td></tr>
 							</div>
@@ -98,6 +104,7 @@
 		</td>
 	</tr>
 </table>	
+
          <%@ include file="include/footer.jsp" %>	
 </body>
 
